@@ -62,7 +62,7 @@ export const NotFound = () => {
 
   const createHotels = () => {
     dispatch(createHotel({
-      name: 'aaadjvhbad',
+      name: 'newwwww hotefhnfghl',
       description: 'aaa',
       phone: '38080664479770',
       address: {

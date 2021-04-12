@@ -1,47 +1,56 @@
 import { getHotels, Hotel, postHotel } from '../../api/hotels';
 import { HotelsType } from './types';
 
-export const loadHotels = () => async (dispatch: any) => {
-  dispatch ({
-    type: HotelsType.GET_All_REQUEST,
-  });
+export const loadHotels = () => ({
+  type: HotelsType.GET_All_REQUEST
+});
 
-  try {
-    const res = await getHotels();
+export const createHotel = (hotel: Hotel) => ({
+  type: HotelsType.ADD_HOTEL_REQUEST,
+  payload: hotel
+});
 
-    dispatch ({
-      type: HotelsType.GET_ALL_SUCCESS,
-      payload: res.data
-    });
+// export const loadHotels = () => async (dispatch: any) => {
+//   dispatch ({
+//     type: HotelsType.GET_All_REQUEST,
+//   });
 
-  } catch (err) {
-    dispatch ({
-      type: HotelsType.GET_ALL_FAIL,
-      payload: err
-    });
-  }
-};
+//   try {
+//     const res = await getHotels();
 
-export const createHotel = (hotel: Hotel) => async (dispatch: any) =>  {
-  dispatch ({
-    type: HotelsType.ADD_HOTEL_REQUEST,
-  });
+//     dispatch ({
+//       type: HotelsType.GET_ALL_SUCCESS,
+//       payload: res.data
+//     });
 
-  try {
-    const res = await postHotel(hotel);
+//   } catch (err) {
+//     dispatch ({
+//       type: HotelsType.GET_ALL_FAIL,
+//       payload: err
+//     });
+//   }
+// };
 
-    dispatch ({
-      type: HotelsType.ADD_HOTEL_SUCCESS,
-      payload: {
-        ...hotel,
-        id: res.data.objectId
-      }
-    });
+// export const createHotel = (hotel: Hotel) => async (dispatch: any) =>  {
+//   dispatch ({
+//     type: HotelsType.ADD_HOTEL_REQUEST,
+//   });
 
-  } catch (err) {
-    dispatch ({
-      type: HotelsType.ADD_HOTEL_FAIL,
-      payload: err
-    });
-  }
-}
+//   try {
+//     const res = await postHotel(hotel);
+
+//     dispatch ({
+//       type: HotelsType.ADD_HOTEL_SUCCESS,
+//       payload: {
+//         ...hotel,
+//         id: res.data.objectId
+//       }
+//     });
+
+//   } catch (err) {
+//     dispatch ({
+//       type: HotelsType.ADD_HOTEL_FAIL,
+//       payload: err
+//     });
+//   }
+// }
